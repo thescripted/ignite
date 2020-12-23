@@ -14,6 +14,8 @@
 
   
   
+    <link rel="shortcut icon" href="_static/ignite_logomark.svg"/>
+  
   
   
     <link rel="canonical" href="https://pytorch.org/ignite/index.htmlconcepts.html"/>
@@ -205,10 +207,6 @@
             <dd><a href="../v0.4.2/concepts.html">v0.4.2</a></dd>
             <dd><a href="concepts.html">v0.4rc.0.post1</a></dd>
         </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../master/concepts.html">master</a></dd>
-        </dl>
     </div>
 </div>
 
@@ -282,7 +280,7 @@
 <h1>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="engine">
 <h2>Engine<a class="headerlink" href="#engine" title="Permalink to this headline">¶</a></h2>
-<p>The <strong>essence</strong> of the framework is the class <a class="reference internal" href="engine.html#ignite.engine.engine.Engine" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a>, an abstraction that loops a given number of times over
+<p>The <strong>essence</strong> of the framework is the class <a class="reference internal" href="engine.html#id0" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a>, an abstraction that loops a given number of times over
 provided data, executes a processing function and returns a result:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">epoch</span> <span class="o">&lt;</span> <span class="n">max_epochs</span><span class="p">:</span>
     <span class="c1"># run an epoch on data</span>
@@ -317,27 +315,27 @@ For example, model trainer for a supervised task:</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>By default, epoch length is defined by <cite>len(data)</cite>. However, user can also manually define the epoch length as a
 number of iterations to loop. In this way the input data can be an iterator.</p>
-<div class="last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trainer</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">epoch_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trainer</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">epoch_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="events-and-handlers">
 <h2>Events and Handlers<a class="headerlink" href="#events-and-handlers" title="Permalink to this headline">¶</a></h2>
-<p>To improve the <a class="reference internal" href="engine.html#ignite.engine.engine.Engine" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a>’s flexibility, an event system is introduced that facilitates interaction on each step of
+<p>To improve the <a class="reference internal" href="engine.html#id0" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a>’s flexibility, an event system is introduced that facilitates interaction on each step of
 the run:</p>
 <ul class="simple">
-<li><em>engine is started/completed</em></li>
-<li><em>epoch is started/completed</em></li>
-<li><em>batch iteration is started/completed</em></li>
+<li><p><em>engine is started/completed</em></p></li>
+<li><p><em>epoch is started/completed</em></p></li>
+<li><p><em>batch iteration is started/completed</em></p></li>
 </ul>
 <p>Complete list of events can be found at <a class="reference internal" href="engine.html#ignite.engine.events.Events" title="ignite.engine.events.Events"><code class="xref py py-class docutils literal notranslate"><span class="pre">Events</span></code></a>.</p>
 <p>Thus, user can execute a custom code as an event handler. Handlers can be any function: e.g. lambda, simple function,
 class method etc. The first argument can be optionally <cite>engine</cite>, but not necessary.</p>
-<p>Let us consider in more detail what happens when <a class="reference internal" href="engine.html#ignite.engine.engine.Engine.run" title="ignite.engine.engine.Engine.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run()</span></code></a> is called:</p>
+<p>Let us consider in more detail what happens when <a class="reference internal" href="engine.html#id10" title="ignite.engine.engine.Engine.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run()</span></code></a> is called:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fire_event</span><span class="p">(</span><span class="n">Events</span><span class="o">.</span><span class="n">STARTED</span><span class="p">)</span>
 <span class="k">while</span> <span class="n">epoch</span> <span class="o">&lt;</span> <span class="n">max_epochs</span><span class="p">:</span>
     <span class="n">fire_event</span><span class="p">(</span><span class="n">Events</span><span class="o">.</span><span class="n">EPOCH_STARTED</span><span class="p">)</span>
@@ -355,8 +353,8 @@ class method etc. The first argument can be optionally <cite>engine</cite>, but 
 <p>At first <em>engine is started</em> event is fired and all this event handlers are executed (we will see in the next paragraph
 how to add event handlers). Next, <cite>while</cite> loop is started and <em>epoch is started</em> event occurs, etc. Every time
 an event is “fired”, attached handlers are executed.</p>
-<p>Attaching an event handler is simple using method <a class="reference internal" href="engine.html#ignite.engine.engine.Engine.add_event_handler" title="ignite.engine.engine.Engine.add_event_handler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_event_handler()</span></code></a> or
-<a class="reference internal" href="engine.html#ignite.engine.engine.Engine.on" title="ignite.engine.engine.Engine.on"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on()</span></code></a> decorator:</p>
+<p>Attaching an event handler is simple using method <a class="reference internal" href="engine.html#id3" title="ignite.engine.engine.Engine.add_event_handler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_event_handler()</span></code></a> or
+<a class="reference internal" href="engine.html#id7" title="ignite.engine.engine.Engine.on"><code class="xref py py-meth docutils literal notranslate"><span class="pre">on()</span></code></a> decorator:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trainer</span> <span class="o">=</span> <span class="n">Engine</span><span class="p">(</span><span class="n">update_model</span><span class="p">)</span>
 
 <span class="n">trainer</span><span class="o">.</span><span class="n">add_event_handler</span><span class="p">(</span><span class="n">Events</span><span class="o">.</span><span class="n">STARTED</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">engine</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start training&quot;</span><span class="p">))</span>
@@ -378,8 +376,8 @@ an event is “fired”, attached handlers are executed.</p>
 <span class="n">trainer</span><span class="o">.</span><span class="n">add_event_handler</span><span class="p">(</span><span class="n">Events</span><span class="o">.</span><span class="n">COMPLETED</span><span class="p">,</span> <span class="n">on_training_ended</span><span class="p">,</span> <span class="n">mydata</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Event handlers can be detached via <a class="reference internal" href="engine.html#ignite.engine.engine.Engine.remove_event_handler" title="ignite.engine.engine.Engine.remove_event_handler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">remove_event_handler()</span></code></a> or via the <a class="reference internal" href="engine.html#ignite.engine.events.RemovableEventHandle" title="ignite.engine.events.RemovableEventHandle"><code class="xref py py-class docutils literal notranslate"><span class="pre">RemovableEventHandle</span></code></a>
-reference returned by <a class="reference internal" href="engine.html#ignite.engine.engine.Engine.add_event_handler" title="ignite.engine.engine.Engine.add_event_handler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_event_handler()</span></code></a>. This can be used to reuse a configured engine for multiple loops:</p>
+<p>Event handlers can be detached via <a class="reference internal" href="engine.html#id9" title="ignite.engine.engine.Engine.remove_event_handler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">remove_event_handler()</span></code></a> or via the <a class="reference internal" href="engine.html#ignite.engine.events.RemovableEventHandle" title="ignite.engine.events.RemovableEventHandle"><code class="xref py py-class docutils literal notranslate"><span class="pre">RemovableEventHandle</span></code></a>
+reference returned by <a class="reference internal" href="engine.html#id3" title="ignite.engine.engine.Engine.add_event_handler"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_event_handler()</span></code></a>. This can be used to reuse a configured engine for multiple loops:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="o">...</span>
 <span class="n">train_loader</span><span class="p">,</span> <span class="n">validation_loader</span><span class="p">,</span> <span class="n">test_loader</span> <span class="o">=</span> <span class="o">...</span>
 
@@ -433,10 +431,10 @@ event filtering function:</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>User can also register custom events with <a class="reference internal" href="engine.html#ignite.engine.engine.Engine.register_events" title="ignite.engine.engine.Engine.register_events"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register_events()</span></code></a>, attach handlers and fire custom events
-calling <a class="reference internal" href="engine.html#ignite.engine.engine.Engine.fire_event" title="ignite.engine.engine.Engine.fire_event"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fire_event()</span></code></a> in any handler or <cite>process_function</cite>.</p>
-<p class="last">See the source code of <code class="xref py py-class docutils literal notranslate"><span class="pre">create_supervised_tbptt_trainer</span></code> for an example of usage of
+<p class="admonition-title">Note</p>
+<p>User can also register custom events with <a class="reference internal" href="engine.html#id8" title="ignite.engine.engine.Engine.register_events"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register_events()</span></code></a>, attach handlers and fire custom events
+calling <a class="reference internal" href="engine.html#id4" title="ignite.engine.engine.Engine.fire_event"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fire_event()</span></code></a> in any handler or <cite>process_function</cite>.</p>
+<p>See the source code of <code class="xref py py-class docutils literal notranslate"><span class="pre">create_supervised_tbptt_trainer</span></code> for an example of usage of
 custom events.</p>
 </div>
 <div class="section" id="timeline-and-events">
@@ -448,16 +446,16 @@ epoch:</p>
 </div>
 <div class="section" id="state">
 <h2>State<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h2>
-<p>A state is introduced in <a class="reference internal" href="engine.html#ignite.engine.engine.Engine" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> to store the output of the <cite>process_function</cite>, current epoch,
-iteration and other helpful information. Each <a class="reference internal" href="engine.html#ignite.engine.engine.Engine" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> contains a <a class="reference internal" href="engine.html#ignite.engine.events.State" title="ignite.engine.events.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></a>,
+<p>A state is introduced in <a class="reference internal" href="engine.html#id0" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> to store the output of the <cite>process_function</cite>, current epoch,
+iteration and other helpful information. Each <a class="reference internal" href="engine.html#id0" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> contains a <a class="reference internal" href="engine.html#ignite.engine.events.State" title="ignite.engine.events.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></a>,
 which includes the following:</p>
 <ul class="simple">
-<li><strong>engine.state.seed</strong>: Seed to set at each data “epoch”.</li>
-<li><strong>engine.state.epoch</strong>: Number of epochs the engine has completed. Initializated as 0 and the first epoch is 1.</li>
-<li><strong>engine.state.iteration</strong>: Number of iterations the engine has completed. Initialized as 0 and the first iteration is 1.</li>
-<li><strong>engine.state.max_epochs</strong>: Number of epochs to run for. Initializated as 1.</li>
-<li><strong>engine.state.output</strong>: The output of the <cite>process_function</cite> defined for the <a class="reference internal" href="engine.html#ignite.engine.engine.Engine" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a>. See below.</li>
-<li>etc</li>
+<li><p><strong>engine.state.seed</strong>: Seed to set at each data “epoch”.</p></li>
+<li><p><strong>engine.state.epoch</strong>: Number of epochs the engine has completed. Initializated as 0 and the first epoch is 1.</p></li>
+<li><p><strong>engine.state.iteration</strong>: Number of iterations the engine has completed. Initialized as 0 and the first iteration is 1.</p></li>
+<li><p><strong>engine.state.max_epochs</strong>: Number of epochs to run for. Initializated as 1.</p></li>
+<li><p><strong>engine.state.output</strong>: The output of the <cite>process_function</cite> defined for the <a class="reference internal" href="engine.html#id0" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a>. See below.</p></li>
+<li><p>etc</p></li>
 </ul>
 <p>Other attributes can be found in the docs of <a class="reference internal" href="engine.html#ignite.engine.events.State" title="ignite.engine.events.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></a>.</p>
 <p>In the code below, <cite>engine.state.output</cite> will store the batch loss. This output is used to print the loss at
@@ -533,10 +531,10 @@ batch, this is how the user can use <cite>output_transform</cite> to get y_pred 
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>A good practice is to use <a class="reference internal" href="engine.html#ignite.engine.events.State" title="ignite.engine.events.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></a> also as a storage of user data created in update or handler functions.
 For example, we would like to save <cite>new_attribute</cite> in the <cite>state</cite>:</p>
-<div class="last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">user_handler_function</span><span class="p">(</span><span class="n">engine</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">user_handler_function</span><span class="p">(</span><span class="n">engine</span><span class="p">):</span>
     <span class="n">engine</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">new_attribute</span> <span class="o">=</span> <span class="mi">12345</span>
 </pre></div>
 </div>
@@ -549,8 +547,8 @@ aspects, e.g. data version, code version, software environment, hardware etc. Ac
 there are some steps to take in order to make computations deterministic on your specific problem on one specific
 platform and PyTorch release:</p>
 <ul class="simple">
-<li>setup random state seed</li>
-<li>set <a class="reference external" href="https://pytorch.org/docs/stable/notes/randomness.html#cudnn">cudnn to deterministic</a> if applicable</li>
+<li><p>setup random state seed</p></li>
+<li><p>set <a class="reference external" href="https://pytorch.org/docs/stable/notes/randomness.html#cudnn">cudnn to deterministic</a> if applicable</p></li>
 </ul>
 <p>By default, these two options can be enough to run and rerun experiments in a deterministic way.
 Ignite’s engine does not impact this behaviour.</p>
@@ -559,8 +557,8 @@ Ignite’s engine does not impact this behaviour.</p>
 <h2>Resuming the training<a class="headerlink" href="#resuming-the-training" title="Permalink to this headline">¶</a></h2>
 <p>It is also possible to resume the training from a checkpoint and approximatively reproduce original run’s behaviour.
 Using Ignite, this can be easily done using <a class="reference internal" href="handlers.html#ignite.handlers.Checkpoint" title="ignite.handlers.Checkpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Checkpoint</span></code></a> handler. Engine provides two methods
-to serialize and deserialize its internal state <a class="reference internal" href="engine.html#ignite.engine.engine.Engine.state_dict" title="ignite.engine.engine.Engine.state_dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">state_dict()</span></code></a> and
-<a class="reference internal" href="engine.html#ignite.engine.engine.Engine.load_state_dict" title="ignite.engine.engine.Engine.load_state_dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_state_dict()</span></code></a>. In addition to serializing model, optimizer, lr scheduler etc user can
+to serialize and deserialize its internal state <a class="reference internal" href="engine.html#id12" title="ignite.engine.engine.Engine.state_dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">state_dict()</span></code></a> and
+<a class="reference internal" href="engine.html#id6" title="ignite.engine.engine.Engine.load_state_dict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">load_state_dict()</span></code></a>. In addition to serializing model, optimizer, lr scheduler etc user can
 store the trainer and then resume the training. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ignite.engine</span> <span class="kn">import</span> <span class="n">Engine</span><span class="p">,</span> <span class="n">Events</span>
 <span class="kn">from</span> <span class="nn">ignite.handlers</span> <span class="kn">import</span> <span class="n">Checkpoint</span><span class="p">,</span> <span class="n">DiskSaver</span>
@@ -664,22 +662,22 @@ train 2 10 [27, 11, 32, 0]
 <p>Complete examples that simulates a crash on a defined iteration and resumes the training from a checkpoint can be found
 here:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/pytorch/ignite/tree/master/examples/mnist#training-save--resume">save/resume MNIST</a></li>
-<li><a class="reference external" href="https://github.com/pytorch/ignite/tree/master/examples/contrib/cifar10#check-resume-training">save/resume Distributed CIFAR10</a></li>
+<li><p><a class="reference external" href="https://github.com/pytorch/ignite/tree/master/examples/mnist#training-save--resume">save/resume MNIST</a></p></li>
+<li><p><a class="reference external" href="https://github.com/pytorch/ignite/tree/master/examples/contrib/cifar10#check-resume-training">save/resume Distributed CIFAR10</a></p></li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">In case when input data is <cite>torch.utils.data.DataLoader</cite>, previous batches are skipped and the first provided batch
+<p class="admonition-title">Note</p>
+<p>In case when input data is <cite>torch.utils.data.DataLoader</cite>, previous batches are skipped and the first provided batch
 corresponds to the batch after the checkpoint iteration. Internally, while resuming, previous datapoint indices are just
 skipped without fetching the data.</p>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">However, while resuming from iteration, random data augmentations are not synchronized in the middle of the epoch and
+<p class="admonition-title">Warning</p>
+<p>However, while resuming from iteration, random data augmentations are not synchronized in the middle of the epoch and
 thus batches remaining until the end of the epoch can be different of those from the initial run.</p>
 </div>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>However, please, keep in mind that there can be an issue with dataflow synchronization on every epoch
 if user’s handler synchronizes the random state, for example, by calling periodically <cite>torch.manual_seed(seed)</cite> during
 the run. This can have an impact on the dataflow:</p>
@@ -721,7 +719,7 @@ After <cite>user_handler()</cite> execution, random state is altered and thus <c
 random batches based on altered random state.</p>
 <p>We provide helper decorator <a class="reference internal" href="engine.html#ignite.engine.deterministic.keep_random_state" title="ignite.engine.deterministic.keep_random_state"><code class="xref py py-meth docutils literal notranslate"><span class="pre">keep_random_state()</span></code></a> to save and restore random states for
 <cite>torch</cite>, <cite>numpy</cite> and <cite>random</cite>. Therefore, we can deal with described issue using this decorator:</p>
-<div class="last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ignite.engine.deterministic</span> <span class="kn">import</span> <span class="n">keep_random_state</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ignite.engine.deterministic</span> <span class="kn">import</span> <span class="n">keep_random_state</span>
 
 <span class="nd">@trainer</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="n">Events</span><span class="o">.</span><span class="n">ITERATION_COMPLETED</span><span class="p">(</span><span class="n">every</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
 <span class="nd">@keep_random_state</span>
@@ -805,11 +803,11 @@ random batches based on altered random state.</p>
 
      
        <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-         <script type="text/javascript" src="_static/jquery.js"></script>
-         <script type="text/javascript" src="_static/underscore.js"></script>
-         <script type="text/javascript" src="_static/doctools.js"></script>
-         <script type="text/javascript" src="_static/language_data.js"></script>
-         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+         <script src="_static/jquery.js"></script>
+         <script src="_static/underscore.js"></script>
+         <script src="_static/doctools.js"></script>
+         <script src="_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
      
 
   

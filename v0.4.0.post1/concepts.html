@@ -14,6 +14,8 @@
 
   
   
+    <link rel="shortcut icon" href="_static/ignite_logomark.svg"/>
+  
   
   
     <link rel="canonical" href="https://pytorch.org/ignite/index.htmlconcepts.html"/>
@@ -205,10 +207,6 @@
             <dd><a href="../v0.4.2/concepts.html">v0.4.2</a></dd>
             <dd><a href="../v0.4rc.0.post1/concepts.html">v0.4rc.0.post1</a></dd>
         </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../master/concepts.html">master</a></dd>
-        </dl>
     </div>
 </div>
 
@@ -319,13 +317,13 @@ Similarly, model evaluation can be done with an engine that runs a single time o
 <p>The type of output of the training step (i.e. <code class="docutils literal notranslate"><span class="pre">loss.item()</span></code> in the above example) is not restricted. Training step
 function can return everything user wants. Output is set to <code class="docutils literal notranslate"><span class="pre">trainer.state.output</span></code> and can be used further for any type of processing.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>By default, epoch length is defined by <code class="docutils literal notranslate"><span class="pre">len(data)</span></code>. However, user can also manually define the epoch length as a
 number of iterations to loop. In this way the input data can be an iterator.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trainer</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">epoch_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="last">If data is a finite data iterator with unknown length (for user), argument <code class="docutils literal notranslate"><span class="pre">epoch_length</span></code> can be omitted and it
+<p>If data is a finite data iterator with unknown length (for user), argument <code class="docutils literal notranslate"><span class="pre">epoch_length</span></code> can be omitted and it
 will be automatically determined when data iterator is exhausted.</p>
 </div>
 <p><strong>Mostly any complexity training logic</strong> can be coded as <code class="docutils literal notranslate"><span class="pre">train_step</span></code> method and a trainer constructed using this method.
@@ -378,9 +376,9 @@ Argument <code class="docutils literal notranslate"><span class="pre">batch</spa
 <p>To improve the <a class="reference internal" href="engine.html#ignite.engine.engine.Engine" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a>’s flexibility, an event system is introduced that facilitates interaction on each step of
 the run:</p>
 <ul class="simple">
-<li><em>engine is started/completed</em></li>
-<li><em>epoch is started/completed</em></li>
-<li><em>batch iteration is started/completed</em></li>
+<li><p><em>engine is started/completed</em></p></li>
+<li><p><em>epoch is started/completed</em></p></li>
+<li><p><em>batch iteration is started/completed</em></p></li>
 </ul>
 <p>Complete list of events can be found at <a class="reference internal" href="engine.html#ignite.engine.events.Events" title="ignite.engine.events.Events"><code class="xref py py-class docutils literal notranslate"><span class="pre">Events</span></code></a>.</p>
 <p>Thus, user can execute a custom code as an event handler. Handlers can be any function: e.g. lambda, simple function,
@@ -481,10 +479,10 @@ event filtering function:</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>User can also register custom events with <a class="reference internal" href="engine.html#ignite.engine.engine.Engine.register_events" title="ignite.engine.engine.Engine.register_events"><code class="xref py py-meth docutils literal notranslate"><span class="pre">register_events()</span></code></a>, attach handlers and fire custom events
 calling <a class="reference internal" href="engine.html#ignite.engine.engine.Engine.fire_event" title="ignite.engine.engine.Engine.fire_event"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fire_event()</span></code></a> in any handler or <cite>process_function</cite>.</p>
-<p class="last">See the source code of <code class="xref py py-class docutils literal notranslate"><span class="pre">create_supervised_tbptt_trainer</span></code> for an example of usage of
+<p>See the source code of <code class="xref py py-class docutils literal notranslate"><span class="pre">create_supervised_tbptt_trainer</span></code> for an example of usage of
 custom events.</p>
 </div>
 <div class="section" id="handlers">
@@ -492,8 +490,8 @@ custom events.</p>
 <p>Library provides a set of built-in handlers to checkpoint the training pipeline, to save best models, to stop training
 if no improvement, to use experiment tracking system, etc. They can be found in the following two modules:</p>
 <ul class="simple">
-<li><a class="reference internal" href="handlers.html"><span class="doc">ignite.handlers</span></a></li>
-<li><a class="reference internal" href="contrib/handlers.html"><span class="doc">ignite.contrib.handlers</span></a></li>
+<li><p><a class="reference internal" href="handlers.html"><span class="doc">ignite.handlers</span></a></p></li>
+<li><p><a class="reference internal" href="contrib/handlers.html"><span class="doc">ignite.contrib.handlers</span></a></p></li>
 </ul>
 <p>Some classes can be simply added to <a class="reference internal" href="engine.html#ignite.engine.engine.Engine" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> as a callable function. For example,</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ignite.handlers</span> <span class="kn">import</span> <span class="n">TerminateOnNan</span>
@@ -529,12 +527,12 @@ epoch:</p>
 iteration and other helpful information. Each <a class="reference internal" href="engine.html#ignite.engine.engine.Engine" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> contains a <a class="reference internal" href="engine.html#ignite.engine.events.State" title="ignite.engine.events.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></a>,
 which includes the following:</p>
 <ul class="simple">
-<li><strong>engine.state.seed</strong>: Seed to set at each data “epoch”.</li>
-<li><strong>engine.state.epoch</strong>: Number of epochs the engine has completed. Initializated as 0 and the first epoch is 1.</li>
-<li><strong>engine.state.iteration</strong>: Number of iterations the engine has completed. Initialized as 0 and the first iteration is 1.</li>
-<li><strong>engine.state.max_epochs</strong>: Number of epochs to run for. Initializated as 1.</li>
-<li><strong>engine.state.output</strong>: The output of the <cite>process_function</cite> defined for the <a class="reference internal" href="engine.html#ignite.engine.engine.Engine" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a>. See below.</li>
-<li>etc</li>
+<li><p><strong>engine.state.seed</strong>: Seed to set at each data “epoch”.</p></li>
+<li><p><strong>engine.state.epoch</strong>: Number of epochs the engine has completed. Initializated as 0 and the first epoch is 1.</p></li>
+<li><p><strong>engine.state.iteration</strong>: Number of iterations the engine has completed. Initialized as 0 and the first iteration is 1.</p></li>
+<li><p><strong>engine.state.max_epochs</strong>: Number of epochs to run for. Initializated as 1.</p></li>
+<li><p><strong>engine.state.output</strong>: The output of the <cite>process_function</cite> defined for the <a class="reference internal" href="engine.html#ignite.engine.engine.Engine" title="ignite.engine.engine.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a>. See below.</p></li>
+<li><p>etc</p></li>
 </ul>
 <p>Other attributes can be found in the docs of <a class="reference internal" href="engine.html#ignite.engine.events.State" title="ignite.engine.events.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></a>.</p>
 <p>In the code below, <cite>engine.state.output</cite> will store the batch loss. This output is used to print the loss at
@@ -610,10 +608,10 @@ batch, this is how the user can use <cite>output_transform</cite> to get y_pred 
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>A good practice is to use <a class="reference internal" href="engine.html#ignite.engine.events.State" title="ignite.engine.events.State"><code class="xref py py-class docutils literal notranslate"><span class="pre">State</span></code></a> also as a storage of user data created in update or handler functions.
 For example, we would like to save <cite>new_attribute</cite> in the <cite>state</cite>:</p>
-<div class="last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">user_handler_function</span><span class="p">(</span><span class="n">engine</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">user_handler_function</span><span class="p">(</span><span class="n">engine</span><span class="p">):</span>
     <span class="n">engine</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">new_attribute</span> <span class="o">=</span> <span class="mi">12345</span>
 </pre></div>
 </div>
@@ -720,11 +718,11 @@ metrics are supported : 1) online and 2) storing the entire output history.</p>
 
      
        <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-         <script type="text/javascript" src="_static/jquery.js"></script>
-         <script type="text/javascript" src="_static/underscore.js"></script>
-         <script type="text/javascript" src="_static/doctools.js"></script>
-         <script type="text/javascript" src="_static/language_data.js"></script>
-         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+         <script src="_static/jquery.js"></script>
+         <script src="_static/underscore.js"></script>
+         <script src="_static/doctools.js"></script>
+         <script src="_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
      
 
   

@@ -14,6 +14,8 @@
 
   
   
+    <link rel="shortcut icon" href="_static/ignite_logomark.svg"/>
+  
   
   
     <link rel="canonical" href="https://pytorch.org/ignite/index.htmlindex.html"/>
@@ -204,10 +206,6 @@
             <dd><a href="v0.4.2/index.html">v0.4.2</a></dd>
             <dd><a href="v0.4rc.0.post1/index.html">v0.4rc.0.post1</a></dd>
         </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="master/index.html">master</a></dd>
-        </dl>
     </div>
 </div>
 
@@ -285,35 +283,35 @@
 <div class="section" id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="https://raw.githubusercontent.com/pytorch/ignite/master/assets/ignite_vs_bare_pytorch.png">Less code than pure PyTorch</a> while ensuring maximum control and simplicity</li>
-<li>Library approach and no program’s control inversion - <em>Use ignite where and when you need</em></li>
-<li>Extensible API for metrics, experiment managers, and other components</li>
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/pytorch/ignite/master/assets/ignite_vs_bare_pytorch.png">Less code than pure PyTorch</a> while ensuring maximum control and simplicity</p></li>
+<li><p>Library approach and no program’s control inversion - <em>Use ignite where and when you need</em></p></li>
+<li><p>Extensible API for metrics, experiment managers, and other components</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>From <a class="reference external" href="https://pypi.org/project/pytorch-ignite/">pip</a>:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pytorch</span><span class="o">-</span><span class="n">ignite</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pytorch-ignite
 </pre></div>
 </div>
 <p>From <a class="reference external" href="https://anaconda.org/pytorch/ignite">conda</a>:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">ignite</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install ignite -c pytorch
 </pre></div>
 </div>
 <p>From source:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pytorch</span><span class="o">/</span><span class="n">ignite</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install git+https://github.com/pytorch/ignite
 </pre></div>
 </div>
 <div class="section" id="nightly-releases">
 <h2>Nightly releases<a class="headerlink" href="#nightly-releases" title="Permalink to this headline">¶</a></h2>
 <p>From pip:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">pre</span> <span class="n">pytorch</span><span class="o">-</span><span class="n">ignite</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install --pre pytorch-ignite
 </pre></div>
 </div>
 <p>From conda (this suggests to install <a class="reference external" href="https://anaconda.org/pytorch-nightly/pytorch">pytorch nightly release</a> instead
 of stable version as dependency):</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">ignite</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span><span class="o">-</span><span class="n">nightly</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install ignite -c pytorch-nightly
 </pre></div>
 </div>
 </div>
@@ -322,17 +320,17 @@ of stable version as dependency):</p>
 <div class="section" id="using-pre-built-images">
 <h3>Using pre-built images<a class="headerlink" href="#using-pre-built-images" title="Permalink to this headline">¶</a></h3>
 <p>Pull a pre-built docker image from <a class="reference external" href="https://hub.docker.com/u/pytorchignite">our Docker Hub</a> and run it with docker v19.03+.</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>docker run --gpus all -it -v $PWD:/workspace/project --network=host --shm-size 16G pytorchignite/base:latest
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run --gpus all -it -v <span class="nv">$PWD</span>:/workspace/project --network<span class="o">=</span>host --shm-size 16G pytorchignite/base:latest
 </pre></div>
 </div>
 <p>Available pre-built images are :</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">pytorchignite/base:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/hvd-base:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/msdp-apex-base:latest</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">pytorchignite/apex:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/hvd-apex:latest</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">pytorchignite/vision:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/hvd-vision:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/msdp-apex-vision:latest</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">pytorchignite/apex-vision:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/hvd-apex-vision:latest</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">pytorchignite/nlp:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/hvd-nlp:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/msdp-apex-nlp:latest</span></code></li>
-<li><code class="docutils literal notranslate"><span class="pre">pytorchignite/apex-nlp:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/hvd-apex-nlp:latest</span></code></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytorchignite/base:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/hvd-base:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/msdp-apex-base:latest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytorchignite/apex:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/hvd-apex:latest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytorchignite/vision:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/hvd-vision:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/msdp-apex-vision:latest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytorchignite/apex-vision:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/hvd-apex-vision:latest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytorchignite/nlp:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/hvd-nlp:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/msdp-apex-nlp:latest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytorchignite/apex-nlp:latest</span> <span class="pre">|</span> <span class="pre">pytorchignite/hvd-apex-nlp:latest</span></code></p></li>
 </ul>
 <p>For more details, see <a class="reference external" href="https://github.com/pytorch/ignite/tree/master/docker">here</a>.</p>
 </div>
@@ -380,14 +378,14 @@ of stable version as dependency):</p>
 <div class="section" id="library-structure">
 <h1>Library structure<a class="headerlink" href="#library-structure" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="#module-ignite" title="ignite"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ignite</span></code></a>: Core of the library, contains an engine for training and
+<li><p><a class="reference internal" href="#module-ignite" title="ignite"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ignite</span></code></a>: Core of the library, contains an engine for training and
 evaluating, most of the classic machine learning metrics and a
 variety of handlers to ease the pain of training and validation of
-neural networks.</li>
-<li><a class="reference internal" href="#module-ignite.contrib" title="ignite.contrib"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ignite.contrib</span></code></a>: The contrib directory contains additional
+neural networks.</p></li>
+<li><p><a class="reference internal" href="#module-ignite.contrib" title="ignite.contrib"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ignite.contrib</span></code></a>: The contrib directory contains additional
 modules that can require extra dependencies. Modules vary from TBPTT engine,
 various optimisation parameter schedulers, experiment tracking system handlers and a
-metrics module containing many regression metrics.</li>
+metrics module containing many regression metrics.</p></li>
 </ul>
 <span class="target" id="module-ignite"></span><div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Package Reference</span></p>
@@ -530,11 +528,11 @@ metrics module containing many regression metrics.</li>
 
      
        <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-         <script type="text/javascript" src="_static/jquery.js"></script>
-         <script type="text/javascript" src="_static/underscore.js"></script>
-         <script type="text/javascript" src="_static/doctools.js"></script>
-         <script type="text/javascript" src="_static/language_data.js"></script>
-         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+         <script src="_static/jquery.js"></script>
+         <script src="_static/underscore.js"></script>
+         <script src="_static/doctools.js"></script>
+         <script src="_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
      
 
   

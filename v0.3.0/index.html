@@ -14,6 +14,8 @@
 
   
   
+    <link rel="shortcut icon" href="_static/ignite_logomark.svg"/>
+  
   
   
     <link rel="canonical" href="https://pytorch.org/ignite/index.htmlindex.html"/>
@@ -197,10 +199,6 @@
             <dd><a href="../v0.4.2/index.html">v0.4.2</a></dd>
             <dd><a href="../v0.4rc.0.post1/index.html">v0.4rc.0.post1</a></dd>
         </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../master/index.html">master</a></dd>
-        </dl>
     </div>
 </div>
 
@@ -274,8 +272,8 @@
 <h1>Ignite Your Networks!<a class="headerlink" href="#ignite-your-networks" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="#module-ignite" title="ignite"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ignite</span></code></a> is a high-level library to help with training neural networks in PyTorch.</p>
 <ul class="simple">
-<li>ignite helps you write compact but full-featured training loops in a few lines of code</li>
-<li>you get a training loop with metrics, early-stopping, model checkpointing and other features without the boilerplate</li>
+<li><p>ignite helps you write compact but full-featured training loops in a few lines of code</p></li>
+<li><p>you get a training loop with metrics, early-stopping, model checkpointing and other features without the boilerplate</p></li>
 </ul>
 <p>Below we show a side-by-side comparison of using pure pytorch and using ignite to create a training loop
 to train and validate your model with occasional checkpointing:</p>
@@ -287,26 +285,26 @@ your code when “rolling your own” training loop.</p>
 <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p>From <a class="reference external" href="https://pypi.org/project/pytorch-ignite/">pip</a>:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pytorch</span><span class="o">-</span><span class="n">ignite</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pytorch-ignite
 </pre></div>
 </div>
 <p>From <a class="reference external" href="https://anaconda.org/pytorch/ignite">conda</a>:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">ignite</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install ignite -c pytorch
 </pre></div>
 </div>
 <p>From source:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pytorch</span><span class="o">/</span><span class="n">ignite</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install git+https://github.com/pytorch/ignite
 </pre></div>
 </div>
 <div class="section" id="nightly-releases">
 <h2>Nightly releases<a class="headerlink" href="#nightly-releases" title="Permalink to this headline">¶</a></h2>
 <p>From pip:</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">pre</span> <span class="n">pytorch</span><span class="o">-</span><span class="n">ignite</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install --pre pytorch-ignite
 </pre></div>
 </div>
 <p>From conda (this suggests to install <a class="reference external" href="https://anaconda.org/pytorch-nightly/pytorch">pytorch nightly release</a> instead
 of stable version as dependency):</p>
-<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">ignite</span> <span class="o">-</span><span class="n">c</span> <span class="n">pytorch</span><span class="o">-</span><span class="n">nightly</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install ignite -c pytorch-nightly
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">
@@ -443,11 +441,11 @@ of stable version as dependency):</p>
 
      
        <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-         <script type="text/javascript" src="_static/jquery.js"></script>
-         <script type="text/javascript" src="_static/underscore.js"></script>
-         <script type="text/javascript" src="_static/doctools.js"></script>
-         <script type="text/javascript" src="_static/language_data.js"></script>
-         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+         <script src="_static/jquery.js"></script>
+         <script src="_static/underscore.js"></script>
+         <script src="_static/doctools.js"></script>
+         <script src="_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
      
 
   

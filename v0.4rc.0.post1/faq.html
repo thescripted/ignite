@@ -14,6 +14,8 @@
 
   
   
+    <link rel="shortcut icon" href="_static/ignite_logomark.svg"/>
+  
   
   
     <link rel="canonical" href="https://pytorch.org/ignite/index.htmlfaq.html"/>
@@ -204,10 +206,6 @@
             <dd><a href="../v0.4.1/faq.html">v0.4.1</a></dd>
             <dd><a href="../v0.4.2/faq.html">v0.4.2</a></dd>
             <dd><a href="faq.html">v0.4rc.0.post1</a></dd>
-        </dl>
-        <dl>
-            <dt>Branches</dt>
-            <dd><a href="../master/faq.html">master</a></dd>
         </dl>
     </div>
 </div>
@@ -417,7 +415,7 @@ basic examples of how to setup trainer or evaluator.</p>
 3/3 : 15 - 64.226
 </pre></div>
 </div>
-<p>If we do not specify <cite>epoch_length</cite>, we can stop the training explicitly by calling <a class="reference internal" href="engine.html#ignite.engine.engine.Engine.terminate" title="ignite.engine.engine.Engine.terminate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">terminate()</span></code></a>
+<p>If we do not specify <cite>epoch_length</cite>, we can stop the training explicitly by calling <a class="reference internal" href="engine.html#id13" title="ignite.engine.engine.Engine.terminate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">terminate()</span></code></a>
 In this case, there will be only a single epoch defined.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">from</span> <span class="nn">ignite.engine</span> <span class="kn">import</span> <span class="n">Engine</span><span class="p">,</span> <span class="n">Events</span>
@@ -583,7 +581,7 @@ but here we will do this explicitly on iteration:</p>
 </div>
 <div class="section" id="switching-data-provider-during-the-training">
 <h2>Switching data provider during the training<a class="headerlink" href="#switching-data-provider-during-the-training" title="Permalink to this headline">¶</a></h2>
-<p>User can easily switch data provider during the training using <a class="reference internal" href="engine.html#ignite.engine.engine.Engine.set_data" title="ignite.engine.engine.Engine.set_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_data()</span></code></a>.
+<p>User can easily switch data provider during the training using <a class="reference internal" href="engine.html#id11" title="ignite.engine.engine.Engine.set_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">set_data()</span></code></a>.
 See an example in the documentation of the method.</p>
 </div>
 <div class="section" id="time-profiling-during-training">
@@ -748,11 +746,11 @@ not yet triggered
 
      
        <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-         <script type="text/javascript" src="_static/jquery.js"></script>
-         <script type="text/javascript" src="_static/underscore.js"></script>
-         <script type="text/javascript" src="_static/doctools.js"></script>
-         <script type="text/javascript" src="_static/language_data.js"></script>
-         <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+         <script src="_static/jquery.js"></script>
+         <script src="_static/underscore.js"></script>
+         <script src="_static/doctools.js"></script>
+         <script src="_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
      
 
   
